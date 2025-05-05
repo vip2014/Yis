@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Yis ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #1a1a1a;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .view {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      animation: fade 1s ease-in-out;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: white;
+      color: #1a1a1a;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .heart {
+      font-size: 3em;
+      animation: beat 1s infinite;
+      color: red;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎯 Barra de carga */
+    .progress-bar {
+      width: 200px;
+      height: 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .progress {
+      height: 100%;
+      background: #ff4d6d;
+      width: 0%;
+      animation: load 3s forwards;
+    }
+    @keyframes scroll-up {
+      0% {
+        top: 100%;
+      }
+      100% {
+        top: -100%;
+      }
+    }
+
+    @keyframes load {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* 🎬 Créditos finales */
+    .credits-container {
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .credits-text {
+      display: inline-block;
+      text-align: center;
+      animation: scroll-up 90s linear forwards;
+      font-size: 1.2em;
+      padding: 0 10px;
+    }
+
+    @keyframes scroll-up {
+      from { transform: translateY(20%); }
+      to { transform: translateY(-100%); }
+    }
+    .decor-images {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .decor-images img {
+      width: 150px;
+      max-width: 25vw;
+      border-radius: 12px;
+      opacity: 0.95;
+      transition: transform 0.5s;
+    }
+    
+    @media (max-width: 768px) {
+      .decor-images {
+        flex-direction: column;
+        top: auto;
+        bottom: 10%;
+        transform: none;
+        gap: 15px;
+      }
+    
+      .decor-images img {
+        width: 100px;
+      }
+    }
+    body {
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  color: white;
+  font-family: sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.corner-images img {
+  width: 120px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.95;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+  text-align: center;
+  z-index: 2;
+  padding: 20px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .corner-images img {
+    width: 80px;
+  }
+
+  .text-container {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+.hug-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1.1em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, bottom 0.5s ease;
+  z-index: 999;
+}
+
+.hug-toast.show {
+  opacity: 1;
+  bottom: 60px;
+}
+
+  </style>
+</head>
+<body>
+ 
+  
+  <!-- VISTA 1 - BIENVENIDA -->
+  <div class="view active" id="view1">
+    <h1>Hey <span style="color:#ffccd5;">Yis</span></h1>
+    <p><strong>Clau</strong> tiene algo para ti</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Carta" width="50" style="margin: 20px 0;">
+    <button onclick="startLoading()">Ver</button>
+  </div>
+
+  <!-- VISTA 2 - CARGANDO -->
+  <div class="view" id="view2">
+    <h1>Feliz aniversario mi amor <span style="color:red;">❤️</span></h1>
+    <img src="https://i.postimg.cc/KvVPPmCD/Captura-de-pantalla-2025-05-05-004816.png" alt="Muñeco con corazón" width="100" style="margin: 20px 0;">
+    <p>Cargando...</p>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+
+  <!-- VISTA 3 - MENSAJE -->
+  <div class="view" id="view3">
+    <h1>💌 Para ti...</h1>
+    <p>Desde que llegaste a mi vida<br>todo es más bonito.<br>Gracias por existir ❤️</p>
+  </div>
+
+  <!-- VISTA 5 - CRÉDITOS -->
+  <div class="view" id="view5">
+    <div class="corner-images">
+      <img src="Assent/images/uno.jpg" class="top-left" alt="">
+      <img src="Assent/images/dos.jpg" class="top-right" alt="">
+      <img src="Assent/images/tres.jpg" class="bottom-left" alt="">
+      <img src="Assent/images/cuatro.jpg" class="bottom-right" alt="">
+    </div>
+    <div class="credits-container">
+      
+      <div class="credits-text">
+        <p>Querida Yis,</p>
+<p>Desde que llegaste a mi vida, todo cambió para bien. Cada día contigo, aunque sea a la distancia, es una bendición que agradezco al universo.</p>
+<p>Tus palabras son mi refugio, tu voz mi paz, tu sonrisa a través de una pantalla, mi motor. Gracias por hacerme sentir amado, comprendido y completo, incluso sin habernos visto aún en persona.</p>
+<p>He aprendido lo que es el amor verdadero a tu lado. Y hoy quiero prometerte que estaré contigo en cada paso, cada sueño y cada reto, sin importar los kilómetros que nos separen.</p>
+<p>No importa lo que venga, lo enfrentaremos juntos. Porque contigo, la vida —incluso desde la distancia— es más hermosa.</p>
+<p>Mi mejor historia no comenzó con un simple "Hola" ni con una casualidad cualquiera. Comenzó el día en que nuestros caminos se cruzaron, y mi alma entendió que había encontrado su lugar...</p>
+<p>Desde entonces, cada instante contigo ha sido una página que quiero releer una y otra vez, un capítulo que jamás quisiera terminar.</p>
+<p>Tú no solo llegaste a mi vida, la transformaste.</p>
+<p>Me enseñaste que el amor no es solo palabras bonitas o momentos perfectos, sino elección, esfuerzo y complicidad. Aprendí que el amor verdadero es despertar cada día y seguir eligiéndote, con tus virtudes y tus imperfecciones, con tus luces y tus sombras. Porque en ti, incluso las sombras son hermosas.</p>
+<p>A tu lado descubrí lo que es la felicidad en su forma más pura: en una risa compartida por llamada, en un mensaje inesperado, en el silencio que a veces compartimos y que dice más que mil palabras.</p>
+<p>Eres mi refugio cuando el mundo pesa, mi paz cuando todo se vuelve caos. Eres mi inspiración, mi fuerza y mi mayor sueño hecho realidad… incluso sin habernos abrazado aún.</p>
+<p>No hay palabras suficientes para describir cuánto te amo, pero si pudiera elegir una sola verdad absoluta, sería esta: tú eres mi mejor historia, la que quiero seguir escribiendo cada día, con cada palabra, con cada promesa, con cada latido…</p>
+<p>Y si el destino me diera la oportunidad de empezar de nuevo, siempre, sin dudarlo, volvería a elegirte a ti.</p>
+<p>Te amo profundamente. Feliz aniversario, mi amor.</p>
+<p>— Clau 💖</p>
+
+      </div>
+    </div>
+    <div class="hug-toast" id="hugToast">
+      ¡Recibiste un Abrazo de Claudio!
+    </div>
+  </div>
+
+  <!-- 🎵 AUDIO -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="Assent/music/ss.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- 🔁 SCRIPT -->
+  <script>
+    function goToView(viewNumber) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view' + viewNumber).classList.add('active');
+    }
+
+    function startLoading() {
+      goToView(2);
+      const music = document.getElementById('bg-music');
+      if (music.paused) music.play().catch(() => {});
+      
+      setTimeout(() => {
+        goToView(3);
+        setTimeout(() => {
+          goToView(5); // Créditos
+        }, 4000);
+      }, 3500);
+    }
+
+    // Intenta iniciar la música al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('bg-music');
+      music.volume = 0.5;
+      music.play().catch(() => {
+        document.body.addEventListener('click', () => music.play(), { once: true });
+      });
+    });
+
+    function goToView(viewNumber) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view' + viewNumber).classList.add('active');
+  
+      if (viewNumber === 5) {
+        showHugToast();
+      }
+    }
+  
+    function showHugToast() {
+      const toast = document.getElementById('hugToast');
+      const hugSound = document.getElementById('hug-sound');
+    
+      if (toast) {
+        toast.classList.add('show');
+    
+        // 🔉 Reproduce el sonido con volumen alto
+        if (hugSound) {
+          hugSound.volume = 1;
+          hugSound.currentTime = 0;
+          hugSound.play();
+        }
+    
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }
+    }
+  </script>
+  <audio id="hug-sound" preload="auto">
+    <source src="Assent/sounds/hug.mp3" type="audio/mpeg">
+  </audio>
+  
+</body>
+</html>
